@@ -17,6 +17,7 @@ class ListTownViewModel @ViewModelInject constructor(
     var listCity: MutableLiveData<List<City>> = MutableLiveData()
 
     init {
+
         /**
          * We launch a coroutine (based on a viewModelScope) to call the [GetCityListUseCase].
          * The Response is posted in the listCity LiveData. We choose to return "null" if the Response
