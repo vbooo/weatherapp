@@ -9,4 +9,13 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="temp_celcius">%s°</string>
+    <string name="temp_max">Température max. : %1$d°</string>
+    <string name="temp_min">Température min. : %1$d°</string>
+    <string name="humidity">Humidité: %1$d\%%</string>
+
+    <string name="network_info">Pas de connexion Internet. Date de dernière MAJ: %1$s</string>
+
+    <string name="error_occured">Impossible d\'afficher les informations</string>
 </resources>

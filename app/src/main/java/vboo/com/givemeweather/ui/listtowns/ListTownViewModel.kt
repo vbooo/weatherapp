@@ -9,24 +9,26 @@ import vboo.com.weatherlib.domain.model.City
 import vboo.com.weatherlib.domain.successOr
 import vboo.com.weatherlib.domain.usecases.GetCityListUseCase
 
+/**
+ * This class handles [ListTownFragment] UI relative data
+ */
 class ListTownViewModel @ViewModelInject constructor(
     val getListCityUseCase: GetCityListUseCase
-) : ViewModel() {
+) : ViewModel(), ClickAction {
 
-    // fake user of the application
+    // list of the cities available
     var listCity: MutableLiveData<List<City>> = MutableLiveData()
+    var eventCityClicked: MutableLiveData<Int> = MutableLiveData()
 
-    init {
-
-        /**
-         * We launch a coroutine (based on a viewModelScope) to call the [GetCityListUseCase].
-         * The Response is posted in the listCity LiveData. We choose to return "null" if the Response
-         * returns an error
-         */
+    fun loadData() {
         viewModelScope.launch {
             getListCityUseCase(Unit).let {
                 listCity.postValue(it.successOr(null))
             }
         }
+    }
+
+    override fun onCityClicked(id: Int) {
+        eventCityClicked.value = id
     }
 }

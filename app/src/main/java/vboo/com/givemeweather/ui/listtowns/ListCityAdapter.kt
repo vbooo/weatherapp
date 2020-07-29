@@ -8,7 +8,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import vboo.com.givemeweather.R
 import vboo.com.weatherlib.domain.model.City
 
-class ListCityAdapter (@ApplicationContext val context: Context): RecyclerView.Adapter<CityHolder>() {
+/**
+ * This class handles city list information
+ */
+class ListCityAdapter (@ApplicationContext val context: Context,
+                    private val listener: ClickAction): RecyclerView.Adapter<CityHolder>() {
 
     // This list contains all the Albums
     var listCity: List<City>? = null
@@ -33,13 +37,13 @@ class ListCityAdapter (@ApplicationContext val context: Context): RecyclerView.A
     override fun onBindViewHolder(holder: CityHolder, position: Int) {
 
         listCity?.let { list ->
-
             // display the city name
             list[position].name.let {  holder.setNameCity(it) }
+
+            holder.getItem().setOnClickListener {
+                listener.onCityClicked(list[position].id)
+            }
         }
-
-
-
 
     }
 }

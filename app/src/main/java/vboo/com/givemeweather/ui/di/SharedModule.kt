@@ -9,8 +9,15 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import vboo.com.givemeweather.utils.NetworkUtilsImpl
+import vboo.com.weatherlib.data.NetworkUtils
 import vboo.com.weatherlib.data.datasource.CityLocalDataSource
+import vboo.com.weatherlib.data.datasource.CityRemoteDataSource
 import vboo.com.weatherlib.data.db.AppDatabase
+import vboo.com.weatherlib.data.network.AppService
+import vboo.com.weatherlib.data.network.AppService.Companion.baseUrl
 import vboo.com.weatherlib.data.repository.CityRepositoryImpl
 import vboo.com.weatherlib.domain.ApplicationScope
 import vboo.com.weatherlib.domain.IoDispatcher
@@ -23,11 +30,23 @@ class SharedModule {
 
     @Singleton
     @Provides
+    fun provideNetworkUtils(
+        @ApplicationContext context: Context
+    ): NetworkUtils {
+        return NetworkUtilsImpl(context)
+    }
+
+    @Singleton
+    @Provides
     fun provideCityRepository(
-        userLocalDataSource: CityLocalDataSource
+        cityLocalDataSource: CityLocalDataSource,
+        cityDataSource: CityRemoteDataSource,
+        networkUtils: NetworkUtils
     ): CityRepository {
         return CityRepositoryImpl(
-            userLocalDataSource
+            cityLocalDataSource,
+            cityDataSource,
+            networkUtils
         )
     }
 
@@ -43,5 +62,20 @@ class SharedModule {
     fun providesApplicationScope(
         @IoDispatcher defaultDispatcher: CoroutineDispatcher
     ): CoroutineScope = CoroutineScope(SupervisorJob() + defaultDispatcher)
+
+    @Provides
+    @Singleton
+    fun providesRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesAlbumApi(retrofit: Retrofit): AppService = retrofit.create(
+        AppService::class.java)
+
 
 }

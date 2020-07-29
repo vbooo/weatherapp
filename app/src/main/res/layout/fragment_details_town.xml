@@ -3,6 +3,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.detailstown.DetailsTownFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_details_town_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ProgressBar
+            android:id="@+id/fragment_details_town_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:max="100"
+            android:visibility="gone"
+            android:backgroundTint="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:layout_marginTop="-7dp"/>
+
+        <TextView
+            android:id="@+id/fragment_details_town_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_large"
+            android:textStyle="bold"
+            android:textSize="@dimen/primary_text_large"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fragment_details_town_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_large"
+            android:paddingStart="@dimen/padding_large"
+            android:paddingEnd="@dimen/padding_small"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_town_description"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:id="@+id/fragment_details_town_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/primary_text"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_icon"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_town_temp"/>
+
+        <TextView
+            android:id="@+id/fragment_details_town_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_large"
+            android:textStyle="bold"
+            android:textSize="@dimen/primary_text"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_description" />
+
+        <TextView
+            android:id="@+id/fragment_details_town_temp_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_large"
+            android:paddingStart="@dimen/padding_small"
+            android:textSize="@dimen/primary_text"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_temp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_town_temp_min"/>
+
+        <TextView
+            android:id="@+id/fragment_details_town_temp_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_large"
+            android:textSize="@dimen/primary_text"
+            android:textColor="@android:color/black"
+            android:paddingStart="@dimen/padding_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_temp_max"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_town_humidity"/>
+
+        <TextView
+            android:id="@+id/fragment_details_town_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/padding_large"
+            android:textSize="@dimen/primary_text"
+            android:paddingStart="@dimen/padding_small"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_town_temp_min" />
+
+        <TextView
+            android:id="@+id/fragment_details_town_network_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center"
+            android:textSize="@dimen/second_text"
+            android:padding="@dimen/padding_small"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/fragment_details_town_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:paddingTop="@dimen/padding_large"
+        android:textSize="@dimen/primary_text"
+        android:paddingStart="@dimen/padding_small"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,17 +35,25 @@ class ListTownFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpAdapter()
+        viewModel.loadData()
 
         // We observe the listCity LiveData contained in viewModel, and display his value when it's available
         viewModel.listCity.observe(viewLifecycleOwner,
             Observer {
                 viewAdapter.listCity = it
             })
+
+        setUpAdapter()
+
+        viewModel.eventCityClicked.observe(viewLifecycleOwner,
+            Observer {
+                val action = ListTownFragmentDirections.actionFirstFragmentToSecondFragment(it)
+                findNavController().navigate(action)
+            })
     }
 
     private fun setUpAdapter() {
-        viewAdapter = ListCityAdapter(requireContext())
+        viewAdapter = ListCityAdapter(requireContext(), viewModel)
 
         // Set our recycler view which will contain our Order list
         fragment_list_town_recycler_view.apply {

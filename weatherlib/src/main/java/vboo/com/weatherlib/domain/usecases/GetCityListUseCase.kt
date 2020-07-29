@@ -6,6 +6,9 @@ import vboo.com.weatherlib.domain.model.City
 import vboo.com.weatherlib.domain.repository.CityRepository
 import javax.inject.Inject
 
+/**
+ * UseCase responsible to get the list of [City]
+ */
 class GetCityListUseCase @Inject constructor (
     private val repository: CityRepository,
     @IoDispatcher dispatcher: CoroutineDispatcher

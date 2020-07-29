@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Main activity of the application, who will display the fragments
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 

@@ -6,7 +6,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_city.view.*
 
-
+/**
+ * ViewHolder for city list
+ */
 class CityHolder (var view: View, var context: Context) : RecyclerView.ViewHolder(view) {
 
     fun setNameCity(value: String) {
