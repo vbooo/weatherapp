@@ -11,5 +11,7 @@ data class CityEntity (
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "country") val country: String,
     @ColumnInfo(name = "lat") val lat: Double,
-    @ColumnInfo(name = "lon") val lon: Double
+    @ColumnInfo(name = "lon") val lon: Double,
+    @ColumnInfo(name = "isFavourite") val isFavourite: Boolean
+
 )

@@ -13,7 +13,10 @@
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/DetailsTownFragment" />
+            app:destination="@id/DetailsTownFragment"/>
+        <action
+            android:id="@+id/action_ListTownFragment_to_addTownFragment"
+            app:destination="@id/addTownFragment" />
     </fragment>
     <fragment
         android:id="@+id/DetailsTownFragment"
@@ -27,5 +30,14 @@
         <argument
             android:name="idCity"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTownFragment"
+        android:name="vboo.com.givemeweather.ui.addtown.AddTownFragment"
+        android:label="add_town_fragment"
+        tools:layout="@layout/add_town_fragment" >
+        <action
+            android:id="@+id/action_addTownFragment_to_ListTownFragment"
+            app:destination="@id/ListTownFragment" />
     </fragment>
 </navigation>

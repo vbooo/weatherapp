@@ -50,6 +50,11 @@ class ListTownFragment : Fragment() {
                 val action = ListTownFragmentDirections.actionFirstFragmentToSecondFragment(it)
                 findNavController().navigate(action)
             })
+
+        fab.setOnClickListener {
+            val action = ListTownFragmentDirections.actionListTownFragmentToAddTownFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun setUpAdapter() {

@@ -18,4 +18,8 @@
     <string name="network_info">Pas de connexion Internet. Date de dernière MAJ: %1$s</string>
 
     <string name="error_occured">Impossible d\'afficher les informations</string>
+
+    <string name="cityPutAsFavourite">Ville ajoutée aux favoris</string>
+    <string name="cityRemoveOfFavourite">Ville retirée des favoris</string>
+    <string name="updateStarError">Impossible de mettre à jour la ville</string>
 </resources>

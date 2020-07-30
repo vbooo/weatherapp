@@ -14,4 +14,7 @@ interface CityDao {
     @Query("SELECT * FROM city")
     fun getAll(): List<CityEntity>
 
+    @Query("UPDATE city SET isFavourite = :isFavourite WHERE city.id = :idCity")
+    fun updateCityAsFavourite(idCity: Int, isFavourite: Boolean)
+
 }

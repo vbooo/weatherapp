@@ -49,4 +49,12 @@ class CityLocalDataSource @Inject constructor(
     fun getHistoricCity(idCity: Int): HistoricWeatherCityEntity? {
         return appDatabase.historicWeatherCityDao().getByIdCity(idCity)
     }
+
+    fun updateCityAsFavourite(city: City): City {
+        // we put false if it was true before clicking, opposite otherwise
+        val isFavourite = !city.isFavourite
+        appDatabase.cityDao().updateCityAsFavourite(city.id, isFavourite)
+        city.isFavourite = isFavourite
+        return city
+    }
 }

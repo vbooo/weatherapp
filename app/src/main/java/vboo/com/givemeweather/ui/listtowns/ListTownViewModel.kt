@@ -31,4 +31,8 @@ class ListTownViewModel @ViewModelInject constructor(
     override fun onCityClicked(id: Int) {
         eventCityClicked.value = id
     }
+
+    override fun onStarClicked(city: City) {
+        TODO("Not yet implemented")
+    }
 }

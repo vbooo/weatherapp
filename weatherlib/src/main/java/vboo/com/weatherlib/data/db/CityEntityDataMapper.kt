@@ -7,7 +7,7 @@ class CityEntityDataMapper @Inject constructor() {
 
     fun transform(cityEntity: CityEntity): City {
         return cityEntity.let {
-            City(it.id, it.name, it.country, it.lat, it.lon)
+            City(it.id, it.name, it.country, it.lat, it.lon, it.isFavourite)
         }
     }
 }

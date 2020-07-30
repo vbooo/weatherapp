@@ -106,4 +106,8 @@ class CityRepositoryImpl @Inject constructor(
 
     }
 
+    override fun updateCityAsFavourite(city: City): City {
+        return datasourceCityLocal.updateCityAsFavourite(city)
+    }
+
 }
