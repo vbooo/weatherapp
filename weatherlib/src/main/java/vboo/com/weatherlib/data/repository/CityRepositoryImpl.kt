@@ -11,7 +11,6 @@ import vboo.com.weatherlib.domain.Result
 import vboo.com.weatherlib.domain.model.City
 import vboo.com.weatherlib.domain.repository.CityRepository
 import vboo.com.weatherlib.domain.usecases.CurrentCityWeatherResult
-import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 
@@ -31,6 +30,10 @@ class CityRepositoryImpl @Inject constructor(
 
     override fun getListCity(): List<City> {
         return datasourceCityLocal.getListCity()
+    }
+
+    override fun getFavouriteListCity(): List<City> {
+        return datasourceCityLocal.getFavouriteListCity()
     }
 
     fun mapToCurrentCityWeatherResult(data: Any?): CurrentCityWeatherResult? {

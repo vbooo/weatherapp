@@ -27,6 +27,17 @@ class CityLocalDataSource @Inject constructor(
         return listCity
     }
 
+    fun getFavouriteListCity(): List<City> {
+        val listCityEntity = appDatabase.cityDao().getFavouriteCity()
+        val listCity = mutableListOf<City>()
+
+        for (city in listCityEntity) {
+            listCity.add(mapper.transform(city))
+        }
+
+        return listCity
+    }
+
     fun deleteHistoricData(id: Int) {
         appDatabase.historicWeatherCityDao().deleteByIdCity(id)
     }

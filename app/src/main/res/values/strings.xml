@@ -22,4 +22,6 @@
     <string name="cityPutAsFavourite">Ville ajoutée aux favoris</string>
     <string name="cityRemoveOfFavourite">Ville retirée des favoris</string>
     <string name="updateStarError">Impossible de mettre à jour la ville</string>
+
+    <string name="main_message">Appuyez sur le bouton "+" pour ajouter des villes</string>
 </resources>

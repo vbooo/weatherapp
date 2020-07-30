@@ -9,4 +9,5 @@ interface CityRepository {
     fun getListCity(): List<City>
     fun getCurrentCityWeather(idCity: Int): Flow<Result<CurrentCityWeatherResult>>
     fun updateCityAsFavourite(city: City): City
+    fun getFavouriteListCity(): List<City>
 }

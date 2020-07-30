@@ -35,12 +35,16 @@ class ListTownFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadData()
+        viewModel.loadFavouriteCities()
 
         // We observe the listCity LiveData contained in viewModel, and display his value when it's available
         viewModel.listCity.observe(viewLifecycleOwner,
             Observer {
                 viewAdapter.listCity = it
+                if (it.isEmpty()) {
+                    fragment_list_town_message.visibility = View.VISIBLE
+                    fragment_list_town_message.text = context?.resources?.getString(R.string.main_message)
+                }
             })
 
         setUpAdapter()

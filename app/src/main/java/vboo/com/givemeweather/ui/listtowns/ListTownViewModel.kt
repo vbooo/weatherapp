@@ -7,22 +7,22 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import vboo.com.weatherlib.domain.model.City
 import vboo.com.weatherlib.domain.successOr
-import vboo.com.weatherlib.domain.usecases.GetCityListUseCase
+import vboo.com.weatherlib.domain.usecases.GetFavouriteCityListUseCase
 
 /**
  * This class handles [ListTownFragment] UI relative data
  */
 class ListTownViewModel @ViewModelInject constructor(
-    val getListCityUseCase: GetCityListUseCase
+    val getFavouriteListCityUseCase: GetFavouriteCityListUseCase
 ) : ViewModel(), ClickAction {
 
     // list of the cities available
     var listCity: MutableLiveData<List<City>> = MutableLiveData()
     var eventCityClicked: MutableLiveData<Int> = MutableLiveData()
 
-    fun loadData() {
+    fun loadFavouriteCities() {
         viewModelScope.launch {
-            getListCityUseCase(Unit).let {
+            getFavouriteListCityUseCase(Unit).let {
                 listCity.postValue(it.successOr(null))
             }
         }
@@ -33,6 +33,6 @@ class ListTownViewModel @ViewModelInject constructor(
     }
 
     override fun onStarClicked(city: City) {
-        TODO("Not yet implemented")
+
     }
 }
